@@ -22,7 +22,7 @@ kubectl describe replicaset
 kubectl delete replicaset myapp-replicaset
 kubectl replace -f replicaset-definition.yml    # BEST OPTION - update replicaset - eg. when number of replicas changed  (have to modify YML file)
 kubectl scale -–replicas=6 –f replicaset-definition.yml  #update replicaset  (on the fly - change definition file)
-kubectl scale -–replicas=6 replicaset myapp-replicaset    #update replicaset  (on the fly without modyfying definition file)
+kubectl scale -–replicas=6 replicaset REPLICA_NAME   #update replicaset  (on the fly without modyfying definition file)
 
 
 #deployment
