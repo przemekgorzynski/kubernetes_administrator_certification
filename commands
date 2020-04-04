@@ -1,0 +1,39 @@
+kubectl run nginx --image nginx      #rum simple nginx pod
+kubectl get nodes
+kubectl cluster-info
+kubectl get all
+
+
+#pod
+kubectl get pods
+kubectl describe pod NAME
+
+
+#replicaset
+kubectl create -f replicaset-definition.yaml
+kubectl get replicaset
+kubectl describe replicaset
+kubectl delete replicaset myapp-replicaset
+kubectl replace -f replicaset-definition.yml    # BEST OPTION - update replicaset - eg. when number of replicas changed  (have to modify YML file)
+kubectl scale -–replicas=6 –f replicaset-definition.yml  #update replicaset  (on the fly - change definition file)
+kubectl scale -–replicas=6 replicaset myapp-replicaset    #update replicaset  (on the fly without modyfying definition file)
+
+
+#deployment
+kubectl create -f deployment-definition.yaml
+kubectl get deployment
+kubectl describe deployment
+kubectl apply –f deployment-definition.yml   #run deployments after changing definition file (eg new version)
+kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1  # set new image to deployment
+kubectl rollout status deployment/myapp-deployment    #status of deployment (rollout)
+kubectl rollout history deployment/myapp-deployment   #history of rollouts
+kubectl rollout undo deployment/myapp-deployment      #falling back rollout
+
+#services  (types NodePort, ClusterIP, LoadBalancer)
+kubectl create -f service-definition.yaml
+kubectl get services
+kubectl describe service
+types:
+ - ClusterIP  - internal service between pods (all to all)
+ - LoadBalancer - can be reach from outside (on clouds provider)
+ - NodePort - From one service to multiple pods within the same service
