@@ -3,10 +3,12 @@ kubectl get nodes
 kubectl cluster-info
 kubectl get all
 
+kubectl run nginx --image=nginx --generator=run-pod/v1
 
 #pod
 kubectl get pods
 kubectl describe pod NAME
+kubectl delete pod NAME
 
 
 #replicaset
