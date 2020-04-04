@@ -1,12 +1,11 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1             # DIFFERENT THAN REPICATION CONTROLLER
+kind: Replicaset                # DIFFERENT THAN REPICATION CONTROLLER
 metadata:                       # for repication controller
   name: myapp-rc
   labels:
-    app: myapp
-    type: front-end
+     app: myapp
+     type: front-end
 spec:                           # for repication controller
-  replicas: 3
   template:
     metadata:                   # for pod
       name: myapp-pod
@@ -18,3 +17,7 @@ spec:                           # for repication controller
           image: nginx
         - name: backend-container
           image: redis
+  replicas: 3
+  selector:                     # DIFFERENT THAN REPICATION CONTROLLER, its mandatory
+    matchlabels:
+      type: front-end
