@@ -6,6 +6,14 @@ kubectl get all
 
 kubectl run nginx --image=nginx --generator=run-pod/v1
 
+#namespace
+By default we are in DEFAULT namespace
+Kubectl get pods --namespace=NAME
+Kubectl create -f pod-definition.yml --namespace=dev  # see pods in dev namespace from default namespace point of view
+kubectl  create namespace NAME
+kubectl config set-context $(kubectl config current-context) --namespace=dev   # pernamently switching to dev namespace
+kubectl get pods --all-namespaces
+
 #pod
 kubectl get pods
 kubectl describe pod NAME
