@@ -1,5 +1,5 @@
 apiVersion: apps/v1             # DIFFERENT THAN REPICATION CONTROLLER
-kind: Deployment               # DIFFERENT THAN REPICATION CONTROLLER
+kind: Deployment                # DIFFERENT THAN REPICATION CONTROLLER
 metadata:                       # for repication controller
   name: myapp-deployment
   labels:
