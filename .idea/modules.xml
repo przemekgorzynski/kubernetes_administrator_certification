@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../deploy_ansible_docker_kubernetess/.idea/deploy_ansible_docker_kubernetess.iml" filepath="$PROJECT_DIR$/../deploy_ansible_docker_kubernetess/.idea/deploy_ansible_docker_kubernetess.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/kube_cerification.iml" filepath="$PROJECT_DIR$/.idea/kube_cerification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../kubernetes/.idea/kubernetes.iml" filepath="$PROJECT_DIR$/../kubernetes/.idea/kubernetes.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,23 @@
+apiVersion: apps/v1             # DIFFERENT THAN REPICATION CONTROLLER
+kind: Deployment               # DIFFERENT THAN REPICATION CONTROLLER
+metadata:                       # for repication controller
+  name: myapp-deployment
+  labels:
+     app: myapp
+     type: front-end
+spec:                           # for repication controller
+  template:
+    metadata:                   # for pod
+      name: myapp-pod
+      labels:
+        app: myapp
+    spec:                       # for repication controller
+      containers:
+        - name: nginx-container
+          image: nginx
+        - name: backend-container
+          image: redis
+  replicas: 3
+  selector:                     # DIFFERENT THAN REPICATION CONTROLLER, its mandatory
+    matchlabels:
+      type: front-end
