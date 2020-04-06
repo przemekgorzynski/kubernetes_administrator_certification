@@ -3,6 +3,29 @@ kubectl get nodes
 kubectl cluster-info
 kubectl get all
 
+=====================================================================================
+kubectl run --generator=run-pod/v1 nginx --image=nginx --dry-run -o yaml
+# DRY RUN DOES NOT CREATE OBJECT, JUST TEST
+# - o yaml prints output how yaml file should be written
+master $ kubectl run --generator=run-pod/v1 nginx --image=nginx --dry-run -o yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx
+  name: nginx
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: IfNotPresent
+    name: nginx
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+master $
+======================================================================================
 
 kubectl run nginx --image=nginx --generator=run-pod/v1
 
