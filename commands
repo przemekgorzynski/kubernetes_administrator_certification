@@ -52,6 +52,7 @@ status:
 ==============================================================================================================
 #create deployment from cli without YAML file
 # this way we cannot use replicas. Need to run scale command safter ddepoyment definitiov
+# kubectl scale deployment/webapp --replicas=3
 
 master $ kubectl create deployment webapp --image=kodekloud/webapp-color --dry-run -o yaml
 apiVersion: apps/v1
