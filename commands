@@ -4,7 +4,7 @@ kubectl cluster-info
 kubectl get all
 
 =====================================================================================
-kubectl run --generator=run-pod/v1 nginx --image=nginx --dry-run -o yaml
+kubectl run --generator=run-pod/v1 nginx --image=nginx  -l tier=db --dry-run -o yaml  # with label tier: db
 
 # DRY RUN DOES NOT CREATE OBJECT, JUST TEST
 # - o yaml prints output how yaml file should be written
