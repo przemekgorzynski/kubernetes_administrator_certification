@@ -9,3 +9,6 @@ spec:
     - targetPort: 80             # port which we would like to reach on pod   IF WE DONT PROVIDE THIS VALUE WILL BE THE SAME AS IN PORT
       port: 80                   # port of service from service point of view   ITS NECEESARY
       nodePort: 3008             # port of Kube node - port we use eg in webbrowser
+  selector:                      # selector to identify affected pods - labels the same as in pod
+    app: my-app
+    type: front-end
