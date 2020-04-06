@@ -5,9 +5,10 @@ kubectl get all
 
 =====================================================================================
 kubectl run --generator=run-pod/v1 nginx --image=nginx --dry-run -o yaml
+
 # DRY RUN DOES NOT CREATE OBJECT, JUST TEST
 # - o yaml prints output how yaml file should be written
-master $ kubectl run --generator=run-pod/v1 nginx --image=nginx --dry-run -o yaml
+# master $ kubectl run --generator=run-pod/v1 nginx --image=nginx --dry-run -o yaml
 apiVersion: v1
 kind: Pod
 metadata:
