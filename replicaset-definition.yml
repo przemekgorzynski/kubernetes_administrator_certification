@@ -5,6 +5,8 @@ metadata:                       # for repication controller
   labels:                       # labels of repicaset itself
      app: myapp
      type: front-end
+  annotations:                  # can add adnotations ( can add email. phones, notes, everything is necessary)
+    buildversion: 1.34
 spec:                           # for repication controller
   template:
     metadata:                   # for pod
