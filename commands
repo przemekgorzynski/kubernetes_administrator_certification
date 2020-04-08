@@ -3,6 +3,7 @@ kubectl get nodes
 kubectl cluster-info
 kubectl get all
 
+kubectl get pods --selector app=App1  # get pods with label app=App1
 
 #namespace
 By default we are in DEFAULT namespace

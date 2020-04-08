@@ -2,14 +2,14 @@ apiVersion: apps/v1             # DIFFERENT THAN REPICATION CONTROLLER
 kind: Replicaset                # DIFFERENT THAN REPICATION CONTROLLER
 metadata:                       # for repication controller
   name: myapp-rc
-  labels:
+  labels:                       # labels of repicaset itself
      app: myapp
      type: front-end
 spec:                           # for repication controller
   template:
     metadata:                   # for pod
       name: myapp-pod
-      labels:
+      labels:                   # labels defined on pod
         app: myapp
     spec:                       # for repication controller
       containers:
@@ -18,6 +18,6 @@ spec:                           # for repication controller
         - name: backend-container
           image: redis
   replicas: 3
-  selector:                     # DIFFERENT THAN REPICATION CONTROLLER, its mandatory
+  selector:                     # DIFFERENT THAN REPICATION CONTROLLER, its mandatory  # match labels defined on pod to applu replicaset
     matchlabels:
       type: front-end
