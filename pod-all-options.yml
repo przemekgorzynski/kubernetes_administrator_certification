@@ -12,7 +12,7 @@ spec:
     - name: redis
       image: redis
   nodeName: node02                    # assign pod to be attached to node2
-  tolerations:
+  tolerations:                        # tolerations - define values for scheduling pods to nodes (taints)
     - key: "app"
       operator: "Equal"
       value: "blue"
