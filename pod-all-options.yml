@@ -12,3 +12,8 @@ spec:
     - name: redis
       image: redis
   nodeName: node02                    # assign pod to be attached to node2
+  tolerations:
+    - key: "app"
+      operator: "Equal"
+      value: "blue"
+      effect: " NoSchedule"
