@@ -1,0 +1,11 @@
+# binding definition - allows to attach existing pod to node. By default node should be attached to node using
+# nodeName option in pod definition (see pod-with-scheduler.yml)
+
+apiVersion: v1
+kind: Binding
+metadata:
+  name: nginx
+target:
+  apiVersion: v1
+  kind: Node
+  name: node02      # name of node to attach
