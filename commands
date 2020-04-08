@@ -3,11 +3,6 @@ kubectl get nodes
 kubectl cluster-info
 kubectl get all
 
-kubectl get pods --selector app=App1  # get pods with label app=App1
-kubectl get all --selector env=prod,bu=finance,tier=frontend
-
-kubectl describe node kubemaster | grep taint
-
 #namespace
 By default we are in DEFAULT namespace
 Kubectl get pods --namespace=NAME
@@ -135,3 +130,15 @@ spec:
 status: {}
 
 ===============================================================================================================
+
+==============================SCHEDULING==================================
+
+kubectl get pods --selector app=App1  # get pods with label app=App1
+kubectl get all --selector env=prod,bu=finance,tier=frontend
+
+kubectl taint nodes node01 spray=mortein:NoSchedule
+kubectl describe node kubemaster | grep taint
+
+kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-             # removing taints
+
+kubectl label nodes NAME size=large           # label nodes with size=large label

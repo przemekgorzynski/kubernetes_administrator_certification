@@ -17,3 +17,5 @@ spec:
       operator: "Equal"
       value: "blue"
       effect: " NoSchedule"
+  nodeSelector:
+    size: Large                       # setting pod to node based on Large label of node ( nodes must be label first)
