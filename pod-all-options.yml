@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  namespace: dev                      # assign pod to namespace dev
+  labels:
+    app: myapp
+spec:
+  containers:                         # create container with two services
+    - name: nginx-container
+      image: nginx
+    - name: redis
+      image: redis
+  nodeName: node02                    # assign pod to be attached to node2
