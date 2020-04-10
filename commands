@@ -142,3 +142,5 @@ kubectl describe node kubemaster | grep taint
 kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-             # removing taints
 
 kubectl label nodes NAME size=large           # label nodes with size=large label
+
+# deamon set is a object that always copy selected pod to every node in cluster
