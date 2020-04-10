@@ -12,6 +12,13 @@ spec:
     - name: redis
       image: redis
   nodeName: node02                    # assign pod to be attached to node2
+    resources:
+      request:                        # assign hardware resources to pod
+        memory: "1Gi"
+        cpu: 1
+      limits:                         # specify how many resources can pod max consume
+        memory: "2Gi"
+        cpu: 2
   tolerations:                        # tolerations - define values for scheduling pods to nodes (taints)
     - key: "app"
       operator: "Equal"
