@@ -1,3 +1,5 @@
+# deamon set is a object that always copy selected pod to every node in cluster
+
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
