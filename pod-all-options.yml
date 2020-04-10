@@ -11,6 +11,7 @@ spec:
       image: nginx
     - name: redis
       image: redis
+    scheduler: my-custom-scheduler    # decide what scheduler will ake care of pod
   nodeName: node02                    # assign pod to be attached to node2
     resources:
       request:                        # assign hardware resources to pod
