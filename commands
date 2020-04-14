@@ -129,8 +129,6 @@ spec:
         resources: {}
 status: {}
 
-===============================================================================================================
-
 ==============================SCHEDULING==================================
 
 kubectl get pods --selector app=App1  # get pods with label app=App1
@@ -142,3 +140,13 @@ kubectl describe node kubemaster | grep taint
 kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-             # removing taints
 
 kubectl label nodes NAME size=large           # label nodes with size=large label
+
+
+=========================== Logging / monitoring =============================================================
+
+No official logging tool - can deploy metric server
+
+git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git
+
+kubectl logs -f POD_NAME
+kubectl logs -f POD_NAME CONTAINER_NAME   in case pod consist of multiple containers
