@@ -19,14 +19,17 @@ spec:
       env:                          # setting env inside container
         - name: APP_COLOR
           value: pink
-      envFROM:                      # apply variables from configMap file
-        - configMapRef:
-            name: app-config
+      envFrom:                      # apply variables from configMap file
+      - configMapRef:
+          name: app-config
       env:                          # getting one variable from ConfigMap
         - name: NAME
-          valeFROM:
+          valeFrom:
             configMapRef:
               name: VALUE_NAME
+      envFrom:                      # getting values from secrets ( other options the same as above for configmap)
+      - secretRef:
+          name: secret-name
     scheduler: my-custom-scheduler    # decide what scheduler will ake care of pod
   nodeName: node02                    # assign pod to be attached to node2
     resources:
