@@ -1,0 +1,14 @@
+# config map is a input with variables. When we want to specify source of variables to be used in many pods instead of
+# configuring it inside each pod. Setting config map with command line
+
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+
+data:
+  APP_COLOR: blue
+  APP_MODE: prod
+
+#kubecrl create -f config-map.yml
