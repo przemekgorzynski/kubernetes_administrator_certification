@@ -18,7 +18,15 @@ spec:
         - "5000"
       env:                          # setting env inside container
         - name: APP_COLOR
-          vakue: pink
+          value: pink
+      envFROM:                      # apply variables from configMap file
+        - configMapRef:
+            name: app-config
+      env:                          # getting one variable from ConfigMap
+        - name: NAME
+          valeFROM:
+            configMapRef:
+              name: VALUE_NAME
     scheduler: my-custom-scheduler    # decide what scheduler will ake care of pod
   nodeName: node02                    # assign pod to be attached to node2
     resources:
