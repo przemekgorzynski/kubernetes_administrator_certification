@@ -157,18 +157,12 @@ kubectl rollout status deployment/myapp-deployment    #status of deployment (rol
 kubectl rollout history deployment/myapp-deployment   #history of rollouts
 kubectl rollout undo deployment/myapp-deployment      #falling back rollout
 
-======================= ENVS===========================================================================
+======================= ENVS / SECRETS===========================================================================
 # config map is a input with variables. When we want to specify source of variables to be used in many pods instead of
 # configuring it inside each pod. Setting config map with command line
 
+# FILE AND COMMAND SARE THE SAME FOR BOTH SECRETS AND ENV
+
+kubectl create secret generic db-secret --from-literal=DB_Host=sql01 --from-literal=DB_User=root --from-literal=DB_Password=password123
+
 kubecrl create -f config-map.yml
-
-kubectl create configmap \
-app-config --from-literal=APP_CPLOR=blue\
-           --from-literal=APP_MOD=prod
-
-
-# setting config map from file
-
-kubectl create configmap\
- app-config --from-file=<path>
