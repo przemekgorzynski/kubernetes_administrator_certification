@@ -9,8 +9,16 @@ spec:
   containers:                         # create container with two services
     - name: nginx-container
       image: nginx
+      args: ["10"]                   # argument passed to container - overwrite CMD command in docker file
+      command: [" sleeper2.0"]       # overwrite ENTRYPOINT argument in docker file
     - name: redis
       image: redis
+      commands:                      # passing commands to pod
+        - "sleep"
+        - "5000"
+      env:                          # setting env inside container
+        - name: APP_COLOR
+          vakue: pink
     scheduler: my-custom-scheduler    # decide what scheduler will ake care of pod
   nodeName: node02                    # assign pod to be attached to node2
     resources:

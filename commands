@@ -21,7 +21,6 @@ kubectl create -f replicationcontroller.yml
 kubectl get replicationcontroller
 
 #replicaset
-
 kubectl edit replicaset NAME  - edit existing replicaset when don't know whem definition file is
 kubectl create -f replicaset-definition.yaml
 kubectl get replicaset
@@ -150,3 +149,10 @@ git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git
 
 kubectl logs -f POD_NAME
 kubectl logs -f POD_NAME CONTAINER_NAME   in case pod consist of multiple containers
+
+============================ APP LIFECYCLE ====================================================================
+kubectl apply –f deployment-definition.yml   #run deployments after changing definition file (eg new version)
+kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1  # set new image to deployment
+kubectl rollout status deployment/myapp-deployment    #status of deployment (rollout)
+kubectl rollout history deployment/myapp-deployment   #history of rollouts
+kubectl rollout undo deployment/myapp-deployment      #falling back rollout
