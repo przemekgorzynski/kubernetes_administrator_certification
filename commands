@@ -166,3 +166,40 @@ kubectl rollout undo deployment/myapp-deployment      #falling back rollout
 kubectl create secret generic db-secret --from-literal=DB_Host=sql01 --from-literal=DB_User=root --from-literal=DB_Password=password123
 
 kubecrl create -f config-map.yml
+
+================ MAINTANANCE ===============================================================================
+
+kubectl drain NODE_NAME   # move pods from node to another (make node redy to reboot, upgrade ), node is marked as unaschedulable
+kubectl cordon NODE_NAME # mark pod as unschedulable, but do not remove / move pods from node
+kubectl uncordon NODE_NAME  # make pod available again for scheduling after coming back, pods don't automatically go back to this pod
+
+# if we have pod not managed by by ReplicationController, ReplicaSet, Job, DaemonSet or StatefulSet it will remove it while drain
+
+kubeadm upgrade plan
+
+
+#upgradin plan
+
+#MASTER
+apt-get upgrade -y kubeadm=1.12.0-00
+kubeadm upgrade apply v1.12.0
+apt-get upgrade -y kubelet=1.12.0-00
+systemctl restart kubelet
+
+#NODES
+kubectl drain NODE
+kubectl cordon NODE
+apt-get upgrade -y kubeadm=1.12.0-00
+apt-get upgrade -y kubelet=1.12.0-00
+kubeadm upgrade node config --kubelet-version v1.12.0
+systemctl restart kubelet
+kubectl uncordon NODE
+
+
+
+#BACKUP
+
+kubectl get all --all-namespaces -o yaml > all-deploy-services.yaml      # create a copy of all objects in cluster
+
+export ETCDCTL_API=3
+etcdctl  snapshot save snapshot.db
