@@ -1,0 +1,18 @@
+apiVersion: natworking.k8s.io/v1
+kind: NetworkPo;icy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchlabels:
+      role: db
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+      - podSelector:
+          matchLabels:
+            name: api-prod
+      ports:
+        - protocol: TCP
+          port: 3306
