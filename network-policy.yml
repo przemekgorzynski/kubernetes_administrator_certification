@@ -8,6 +8,7 @@ spec:
       role: db
   policyTypes:
   - Ingress
+  - Egress
   ingress:                  # ingress - incoming traffic
   - from:
       - podSelector:
