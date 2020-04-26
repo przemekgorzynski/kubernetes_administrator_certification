@@ -203,3 +203,14 @@ kubectl get all --all-namespaces -o yaml > all-deploy-services.yaml      # creat
 
 export ETCDCTL_API=3
 etcdctl  snapshot save snapshot.db
+
+
+====================================ROLES======================================
+Firs tneed to creat role and role binding with yaml file
+
+kubectl get roles
+kubectl get rolebindings
+kubectl describe role NAME
+
+kubectl auth ca-i delete nodes   # check if we can perform operations of deleting nodes
+kubectl auth can-i create pods --as dev-user  # checking permissions as another user
