@@ -3,12 +3,12 @@ kind: NetworkPo;icy
 metadata:
   name: db-policy
 spec:
-  podSelector:
+  podSelector:                # selecting pods to link
     matchlabels:
       role: db
   policyTypes:
   - Ingress
-  ingress:
+  ingress:                  # ingress - incoming traffic
   - from:
       - podSelector:
           matchLabels:
