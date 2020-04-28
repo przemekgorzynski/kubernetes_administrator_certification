@@ -11,6 +11,9 @@ spec:
       image: nginx
       args: ["10"]                   # argument passed to container - overwrite CMD command in docker file
       command: [" sleeper2.0"]       # overwrite ENTRYPOINT argument in docker file
+      volumeMounts:                                       # mount volume created below to /opt
+        - mountPath: /opt
+          name: data-volume
     - name: redis
       image: redis
       commands:                      # passing commands to pod
@@ -31,6 +34,7 @@ spec:
       - secretRef:
           name: secret-name
     scheduler: my-custom-scheduler    # decide what scheduler will ake care of pod
+
   nodeName: node02                    # assign pod to be attached to node2
     resources:
       request:                        # assign hardware resources to pod
@@ -46,3 +50,13 @@ spec:
       effect: " NoSchedule"
   nodeSelector:
     size: Large                       # setting pod to node based on Large label of node ( nodes must be label first)
+
+  volumes:                                    # create volume on local host ( not recommended on multi-node k8s because pods will use /data on local nodes - data can differ between hosts)
+    - name: data-volume
+      hostPath:
+        path: /data
+        type: Directory
+    - name: data-volume-aws                 # volume on AWS (better solution for multi-node k8s - one storage to all podsacross all nodes )
+      awsElasticBlockStore:
+        volumeID: <volume-id>
+        fsType: ext4
