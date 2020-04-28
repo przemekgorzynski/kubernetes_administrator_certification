@@ -2,6 +2,8 @@ kubectl run nginx --image nginx      #rum simple nginx pod
 kubectl get nodes
 kubectl cluster-info
 kubectl get all
+kubectl create -f persistnv_volume.yml
+kubectl create -f persistentvolumeclaim.yml
 kubectl exec ubuntu-sleeper whoami
 
 
