@@ -24,3 +24,6 @@ spec:
       awsElasticBlockStore:
         volumeID: <volume-id>
         fsType: ext4
+    - name: mypd
+      persistentVolumeClaim:              # persistent volume
+        claimName: myclaim
