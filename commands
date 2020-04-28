@@ -221,3 +221,6 @@ kubectl auth can-i create pods --as dev-user  # checking permissions as another 
 network policy is a object to modify connection. Within cluster all objects can talk to each other.
 In case eg. we don't want pod to be reachable from another thren we create network policy object that allows requested
 traffic and link to pod.
+
+
+===================== Volume ============================================================================

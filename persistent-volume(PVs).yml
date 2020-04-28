@@ -1,0 +1,16 @@
+# instead of crating volume in each pod, we can create persistent volume and attach it later to pods
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-vol1
+spec:
+  accessModes:
+    - ReadWriteOnce              # define how volume should be mounted on host (ReadOnlyMany , readWriteOnce, ReadWriteMany)
+  capacity:
+    storage: 1Gi
+  hostPath:                     # volume path on host ( do not used in prod as it local on node)
+    path: /tmp/data
+  awsElasticBlockStore:         # volume on AWS
+    volumeID: <volume-id>
+    fsType: ext4
