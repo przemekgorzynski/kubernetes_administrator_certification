@@ -1,0 +1,12 @@
+# when we have crate persistent volume, it can be accessed by pod by "persistent volume claims" 1-to-1  1claim-1volume
+# when we create it looks for free PV with enough space and accessmode match
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
