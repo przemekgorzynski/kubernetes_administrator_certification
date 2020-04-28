@@ -6,24 +6,24 @@ metadata:
     app: myapp
 spec:
   containers:
-    - name: nginx-container
-      image: nginx
-      command: ["/bin/sh","-c"]
-      args: ["shuf -i 0-100 -n 1 >> /opt/number.out;"]
-      volumeMounts:                                       # mount volume created below to /opt
-        - mountPath: /opt
-          name: data-volume
+  - name: nginx-container
+    image: nginx
+    command: ["/bin/sh","-c"]
+    args: ["shuf -i 0-100 -n 1 >> /opt/number.out;"]
+    volumeMounts:                                       # mount volume created below to /opt
+    - mountPath: /opt
+      name: data-volume
 
   volumes:                                    # create volume on local host ( not recommended on multi-node k8s because pods will use /data on local nodes - data can differ between hosts)
-    - name: data-volume
-      hostPath:
+  - name: data-volume
+    hostPath:
         path: /data
         type: Directory
 
-    - name: data-volume-aws                 # volume on AWS (better solution for multi-node k8s - one storage to all podsacross all nodes )
-      awsElasticBlockStore:
-        volumeID: <volume-id>
-        fsType: ext4
-    - name: mypd
-      persistentVolumeClaim:              # persistent volume
-        claimName: myclaim
+  - name: data-volume-aws                 # volume on AWS (better solution for multi-node k8s - one storage to all podsacross all nodes )
+    awsElasticBlockStore:
+       volumeID: <volume-id>
+       fsType: ext4
+  - name: mypd
+    persistentVolumeClaim:              # persistent volume
+       claimName: myclaim
