@@ -5,7 +5,7 @@ kubectl get all
 kubectl create -f persistnv_volume.yml
 kubectl create -f persistentvolumeclaim.yml
 kubectl exec ubuntu-sleeper whoami
-
+kubectl expose deployment -n ingress-space ingress-controller --type=NodePort --port=80 --name=ingress --dry-run -o yaml
 
 #namespace
 By default we are in DEFAULT namespace
